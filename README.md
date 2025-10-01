@@ -1,1 +1,1 @@
-this is PHMIS Redme file
+# egp_bmis
