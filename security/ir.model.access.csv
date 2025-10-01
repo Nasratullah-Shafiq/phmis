@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_medicine_user,medicine.user,model_pharmacy_medicine,,1,1,1,1
+access_supplier_user,supplier.user,model_pharmacy_supplier,,1,1,1,1
+access_customer_user,customer.user,model_pharmacy_customer,,1,1,1,1
+access_purchase_user,purchase.user,model_pharmacy_purchase,,1,1,1,1
+access_sale_user,sale.user,model_pharmacy_sale,,1,1,1,1
+access_prescription_user,prescription.user,model_pharmacy_prescription,,1,1,1,1
