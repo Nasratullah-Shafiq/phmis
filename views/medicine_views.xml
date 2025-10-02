@@ -1,0 +1,55 @@
+<odoo>
+    <!-- Medicine Tree View -->
+    <record id="view_medicine_tree" model="ir.ui.view">
+        <field name="name">medicine.tree</field>
+        <field name="model">pharmacy.medicine</field>
+        <field name="arch" type="xml">
+            <tree string="Medicines">
+                <field name="name"/>
+                <field name="brand"/>
+                <field name="generic_name"/>
+                <field name="category"/>
+                <field name="batch_no"/>
+                <field name="expiry_date"/>
+                <field name="quantity"/>
+                <field name="selling_price"/>
+                <field name="low_stock"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Medicine Form View -->
+    <record id="view_medicine_form" model="ir.ui.view">
+        <field name="name">medicine.form</field>
+        <field name="model">pharmacy.medicine</field>
+        <field name="arch" type="xml">
+            <form string="Medicine">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="brand"/>
+                        <field name="generic_name"/>
+                        <field name="category"/>
+                        <field name="batch_no"/>
+                        <field name="expiry_date"/>
+                        <field name="quantity"/>
+                        <field name="unit_price"/>
+                        <field name="selling_price"/>
+                        <field name="low_stock"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Medicine Action -->
+    <record id="action_medicine" model="ir.actions.act_window">
+        <field name="name">Medicines</field>
+        <field name="res_model">pharmacy.medicine</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Medicine Menu -->
+    <menuitem id="menu_pharmacy" name="Pharmacy"/>
+    <menuitem id="menu_medicine" name="Medicines" parent="menu_pharmacy" action="action_medicine"/>
+</odoo>
