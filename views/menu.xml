@@ -1,0 +1,51 @@
+<odoo>
+<menuitem id="pharmacy_root_menu" name="Pharmacy" sequence="1"/>
+
+    <menuitem id="pharmacy_supplier_menu"
+              name="Suppliers"
+              parent="pharmacy_root_menu"
+              action="pmis.action_supplier"
+              sequence="3"/>
+
+    <!-- Medicine Menu -->
+    <menuitem id="pharmacy_medicine_menu"
+              name="Medicines"
+              parent="pharmacy_root_menu"
+              action="action_medicine"
+              sequence="2"/>
+
+    <!-- Supplier Menu -->
+    <menuitem id="pharmacy_supplier_menu"
+              name="Suppliers"
+              parent="pharmacy_root_menu"
+              action="action_supplier"
+              sequence="3"/>
+
+    <!-- Customer Menu -->
+    <menuitem id="pharmacy_customer_menu"
+              name="Customers"
+              parent="pharmacy_root_menu"
+              action="action_customer"
+              sequence="4"/>
+
+    <!-- Purchase Menu -->
+    <menuitem id="pharmacy_purchase_menu"
+              name="Purchases"
+              parent="pharmacy_root_menu"
+              action="action_purchase"
+              sequence="5"/>
+
+    <!-- Sale Menu -->
+    <menuitem id="pharmacy_sale_menu"
+              name="Sales"
+              parent="pharmacy_root_menu"
+              action="action_sale"
+              sequence="6"/>
+
+    <!-- Prescription Menu -->
+    <menuitem id="pharmacy_prescription_menu"
+              name="Prescriptions"
+              parent="pharmacy_root_menu"
+              action="action_prescription"
+              sequence="7"/>
+</odoo>
