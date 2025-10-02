@@ -1,0 +1,62 @@
+<odoo>
+
+    <!-- ========================= -->
+    <!--        CUSTOMER VIEWS     -->
+    <!-- ========================= -->
+    <record id="view_customer_tree" model="ir.ui.view">
+        <field name="name">pharmacy.customer.tree</field>
+        <field name="model">pharmacy.customer</field>
+        <field name="arch" type="xml">
+            <tree string="Customers">
+                <field name="name"/>
+                <field name="contact"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_customer_form" model="ir.ui.view">
+        <field name="name">pharmacy.customer.form</field>
+        <field name="model">pharmacy.customer</field>
+        <field name="arch" type="xml">
+            <form string="Customer">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="contact"/>
+                        <field name="prescription_history"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_customer_search" model="ir.ui.view">
+        <field name="name">pharmacy.customer.search</field>
+        <field name="model">pharmacy.customer</field>
+        <field name="arch" type="xml">
+            <search string="Search Customers">
+                <field name="name"/>
+                <field name="contact"/>
+                <filter string="Has Prescription" name="has_prescription" domain="[('prescription_history','!=',False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_customer_graph" model="ir.ui.view">
+        <field name="name">pharmacy.customer.graph</field>
+        <field name="model">pharmacy.customer</field>
+        <field name="arch" type="xml">
+            <graph string="Customers" type="bar">
+                <field name="name" type="row"/>
+                <field name="id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+        <!-- Customer Action -->
+    <record id="action_customer" model="ir.actions.act_window">
+        <field name="name">Customers</field>
+        <field name="res_model">pharmacy.customer</field>
+        <field name="view_mode">tree,form,graph</field>
+    </record>
+
+</odoo>
