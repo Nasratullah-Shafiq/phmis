@@ -1,0 +1,102 @@
+<odoo>
+    <!-- ========================= -->
+    <!--     PRESCRIPTION VIEWS    -->
+    <!-- ========================= -->
+
+    <!-- Tree View -->
+    <record id="view_prescription_tree" model="ir.ui.view">
+        <field name="name">pharmacy.prescription.tree</field>
+        <field name="model">pharmacy.prescription</field>
+        <field name="arch" type="xml">
+            <tree string="Prescriptions">
+                <field name="customer_id"/>
+                <field name="file"/>
+                <field name="date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View with Chatter -->
+    <record id="view_prescription_form" model="ir.ui.view">
+        <field name="name">pharmacy.prescription.form</field>
+        <field name="model">pharmacy.prescription</field>
+        <field name="arch" type="xml">
+            <form string="Prescription">
+                <sheet>
+                    <group>
+                        <field name="customer_id"/>
+                        <field name="file" filename="file_name"/>
+                        <field name="date"/>
+                    </group>
+                </sheet>
+
+                <!-- Chatter for messages and activity tracking -->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_prescription_search" model="ir.ui.view">
+        <field name="name">pharmacy.prescription.search</field>
+        <field name="model">pharmacy.prescription</field>
+        <field name="arch" type="xml">
+            <search string="Search Prescriptions">
+                <field name="customer_id"/>
+                <field name="date"/>
+
+                <filter string="Today" name="today" domain="[('date','=',context_today())]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_customer" string="Customer" context="{'group_by':'customer_id'}"/>
+                    <filter name="group_by_date" string="Date" context="{'group_by':'date'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Graph View -->
+    <record id="view_prescription_graph" model="ir.ui.view">
+        <field name="name">pharmacy.prescription.graph</field>
+        <field name="model">pharmacy.prescription</field>
+        <field name="arch" type="xml">
+            <graph string="Prescriptions" type="bar">
+                <field name="customer_id" type="row"/>
+                <field name="id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!--          ACTIONS          -->
+    <!-- ========================= -->
+
+    <record id="action_prescription" model="ir.actions.act_window">
+        <field name="name">Prescriptions</field>
+        <field name="res_model">pharmacy.prescription</field>
+        <field name="view_mode">tree,form,graph</field>
+        <field name="help" type="html">
+            <p>
+                Manage all customer prescriptions here.
+                You can attach prescription files and track customer information.
+            </p>
+        </field>
+    </record>
+
+    <!-- ========================= -->
+    <!--          MENUS            -->
+    <!-- ========================= -->
+
+    <!-- Root menu (only if not already defined elsewhere) -->
+    <menuitem id="pharmacy_root_menu" name="Pharmacy" sequence="1"/>
+
+    <!-- Prescription Menu Item -->
+    <menuitem id="pharmacy_prescription_menu"
+              name="Prescriptions"
+              parent="pharmacy_root_menu"
+              action="pmis.action_prescription"
+              sequence="6"/>
+</odoo>
