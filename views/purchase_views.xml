@@ -1,0 +1,70 @@
+<odoo>
+      <!-- ========================= -->
+    <!--        PURCHASE VIEWS     -->
+    <!-- ========================= -->
+    <record id="view_purchase_tree" model="ir.ui.view">
+        <field name="name">pharmacy.purchase.tree</field>
+        <field name="model">pharmacy.purchase</field>
+        <field name="arch" type="xml">
+            <tree string="Purchases">
+                <field name="medicine_id"/>
+                <field name="supplier_id"/>
+                <field name="quantity"/>
+                <field name="unit_price"/>
+                <field name="total_price"/>
+                <field name="date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_purchase_form" model="ir.ui.view">
+        <field name="name">pharmacy.purchase.form</field>
+        <field name="model">pharmacy.purchase</field>
+        <field name="arch" type="xml">
+            <form string="Purchase">
+                <sheet>
+                    <group>
+                        <field name="medicine_id"/>
+                        <field name="supplier_id"/>
+                        <field name="quantity"/>
+                        <field name="unit_price"/>
+                        <field name="total_price" readonly="1"/>
+                        <field name="date"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_purchase_search" model="ir.ui.view">
+        <field name="name">pharmacy.purchase.search</field>
+        <field name="model">pharmacy.purchase</field>
+        <field name="arch" type="xml">
+            <search string="Search Purchases">
+                <field name="medicine_id"/>
+                <field name="supplier_id"/>
+                <field name="date"/>
+                <filter string="Recent Purchases" name="recent" domain="[('date','>=',context_today())]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_purchase_graph" model="ir.ui.view">
+        <field name="name">pharmacy.purchase.graph</field>
+        <field name="model">pharmacy.purchase</field>
+        <field name="arch" type="xml">
+            <graph string="Purchases" type="bar">
+                <field name="medicine_id" type="row"/>
+                <field name="quantity" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="action_purchase" model="ir.actions.act_window">
+        <field name="name">Purchases</field>
+        <field name="res_model">pharmacy.purchase</field>
+        <field name="view_mode">tree,form,graph</field>
+    </record>
+
+
+</odoo>
